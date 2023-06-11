@@ -69,7 +69,7 @@
 <meta property="og:image" content="http://example.com/2023/06/10/Git/clip_image104.jpg">
 <meta property="og:image" content="http://example.com/2023/06/10/Git/clip_image106.jpg">
 <meta property="article:published_time" content="2023-06-10T13:41:04.868Z">
-<meta property="article:modified_time" content="2023-06-10T15:02:34.346Z">
+<meta property="article:modified_time" content="2023-06-11T13:37:36.459Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2023/06/10/Git/clip_image002.jpg">
@@ -155,53 +155,73 @@
       
         <h2 id="二、Git"><a href="#二、Git" class="headerlink" title="二、Git"></a>二、Git</h2><span id="more"></span>
 
-<p>1.安装git</p>
-<p>需要两个软件包</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><ul>
+<li>需要两个软件包</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image002.jpg" class="" title="img">
 
 <img src="/2023/06/10/Git/clip_image004.jpg" class="" title="img">
 
-<p>安装完成git后，右键会出现Git GUI Here和Git Bash Here</p>
+<ul>
+<li>安装完成git后，右键会出现Git GUI Here和Git Bash Here</li>
+</ul>
 
 
-<p>安装完成tortoise后会出现下图红框中的三个</p>
+<ul>
+<li>安装完成tortoise后会出现下图红框中的三个</li>
+</ul>
 
 
-<p>2.git初始化</p>
-<p>1）新建测试文件夹test</p>
+<h2 id="git初始化"><a href="#git初始化" class="headerlink" title="git初始化"></a>git初始化</h2><ul>
+<li>新建测试文件夹test</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image002.jpg" class="" title="img">
 
-<p>2）进入文件夹，右键创建版本库</p>
+<ul>
+<li>进入文件夹，右键创建版本库</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image004.jpg" class="" title="img">
 
-<p>然后就可以看到test文件上多了一个绿色的小对号图标</p>
+<ul>
+<li>然后就可以看到test文件上多了一个绿色的小对号图标</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image006.jpg" class="" title="img">
 
-<p>同时test文件下会生成一个.git隐藏文件</p>
+<ul>
+<li>同时test文件下会生成一个.git隐藏文件</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image008.jpg" class="" title="img">
 
-<p>3.git操作本地仓库</p>
-<p>（1）初始化仓库（以test仓库为例）</p>
+<h2 id="git操作本地仓库"><a href="#git操作本地仓库" class="headerlink" title="git操作本地仓库"></a>git操作本地仓库</h2><ul>
+<li>初始化仓库（以test仓库为例）</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image010.jpg" class="" title="img">
 
-<p>（2）添加文件</p>
-<p>1）创建helloworld.txt文件</p>
-<img src="/2023/06/10/Git/clip_image012.jpg" class="" title="img">
+<ul>
+<li><p>添加文件</p>
+<ul>
+<li>创建helloworld.txt文件</li>
+</ul>
+  <img src="/2023/06/10/Git/clip_image012.jpg" class="" title="img">
 
-<p>2）将文件进行添加</p>
-<img src="/2023/06/10/Git/clip_image014.jpg" class="" title="img">（3）提交
+<ul>
+<li>将文件进行添加</li>
+</ul>
+  <img src="/2023/06/10/Git/clip_image014.jpg" class="" title="img">（3）提交
 
-<p>提交文件到本地仓库</p>
-<img src="/2023/06/10/Git/clip_image016.png" class="" title="img">
+<p>  提交文件到本地仓库</p>
+  <img src="/2023/06/10/Git/clip_image016.png" class="" title="img">
 
-<img src="/2023/06/10/Git/clip_image018.jpg" class="" title="img">
+  <img src="/2023/06/10/Git/clip_image018.jpg" class="" title="img">
 
-<img src="/2023/06/10/Git/clip_image020.jpg" class="" title="img">
+  <img src="/2023/06/10/Git/clip_image020.jpg" class="" title="img">
 
-<p>提交完成后helloworld.txt生成了一个小绿色对号</p>
-<img src="/2023/06/10/Git/clip_image022.jpg" class="" title="img">
-
-<p>（4）修改文件与再次提交文件</p>
+<p>  提交完成后helloworld.txt生成了一个小绿色对号</p>
+  <img src="/2023/06/10/Git/clip_image022.jpg" class="" title="img">
+</li>
+<li><p>修改文件与再次提交文件</p>
+</li>
+</ul>
 <p>当我们修改文件以后,文件上多了一个红色感叹号</p>
 <img src="/2023/06/10/Git/clip_image024.jpg" class="" title="img">
 
@@ -212,53 +232,70 @@
 
 <img src="/2023/06/10/Git/clip_image030.jpg" class="" title="img">
 
-<p>（5）修改文件，不提交，和上一个版本比较差异</p>
+<ul>
+<li>修改文件，不提交，和上一个版本比较差异</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image032.png" class="" title="img">
 
 <img src="/2023/06/10/Git/clip_image034.jpg" class="" title="img">
 
-<p>（6）查看提交历史记录</p>
+<ul>
+<li>查看提交历史记录</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image036.png" class="" title="img">
 
 <img src="/2023/06/10/Git/clip_image038.jpg" class="" title="img">
 
-<p>（7）回退历史版本</p>
+<ul>
+<li>回退历史版本</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image040.png" class="" title="img">
-
 <img src="/2023/06/10/Git/clip_image042.jpg" class="" title="img">
 
-<p>（8）文件删除</p>
-<p>1）本地删除与恢复</p>
-<img src="/2023/06/10/Git/clip_image044.png" class="" title="img">
+<ul>
+<li><p>文件删除</p>
+<ul>
+<li>本地删除与恢复</li>
+</ul>
+  <img src="/2023/06/10/Git/clip_image044.png" class="" title="img">
 
-<img src="/2023/06/10/Git/clip_image046.jpg" class="" title="img">
+  <img src="/2023/06/10/Git/clip_image046.jpg" class="" title="img">
 
-<img src="/2023/06/10/Git/clip_image048.jpg" class="" title="img">
+  <img src="/2023/06/10/Git/clip_image048.jpg" class="" title="img">
 
-<p>2)从版本库删除</p>
-<p>删除文件,和上面的操作一样；提交,此时服务文件已经删除了</p>
-<p>3）从版本中删除，但不删除本地</p>
-<img src="/2023/06/10/Git/clip_image050.png" class="" title="img">
+<ul>
+<li>从版本库删除</li>
+</ul>
+<p>  删除文件,和上面的操作一样；提交,此时服务文件已经删除了</p>
+<ul>
+<li>从版本中删除，但不删除本地</li>
+</ul>
+  <img src="/2023/06/10/Git/clip_image050.png" class="" title="img">
 
-<img src="/2023/06/10/Git/clip_image052.jpg" class="" title="img">
-
-<p>4.git操作本地仓库（分支）</p>
-<p>（1）创建分支</p>
+  <img src="/2023/06/10/Git/clip_image052.jpg" class="" title="img"></li>
+</ul>
+<h2 id="git操作本地仓库（分支）"><a href="#git操作本地仓库（分支）" class="headerlink" title="git操作本地仓库（分支）"></a>git操作本地仓库（分支）</h2><ul>
+<li>创建分支</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image054.png" class="" title="img">
 
 <img src="/2023/06/10/Git/clip_image056.jpg" class="" title="img">
 
-<p>（2）查看分支</p>
+<ul>
+<li><p>查看分支</p>
 <img src="/2023/06/10/Git/clip_image058.png" class="" title="img">
-
 <img src="/2023/06/10/Git/clip_image060.jpg" class="" title="img">
-
-<p>（3）切换分支</p>
+</li>
+<li><p>切换分支</p>
+</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image062.png" class="" title="img">
 
 <img src="/2023/06/10/Git/clip_image064.jpg" class="" title="img">
 
-<p>（4）合并分支</p>
+<ul>
+<li>合并分支</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image066.png" class="" title="img">
 
 <p>master分支中的文件：</p>
@@ -270,42 +307,57 @@
 <p>和r1合并后，把r1中的文件合并到了master中</p>
 <img src="/2023/06/10/Git/clip_image072.jpg" class="" title="img">
 
-<p>（5）删除分支</p>
+<ul>
+<li>删除分支</li>
+</ul>
 <p>进入到版本分支图中</p>
 <img src="/2023/06/10/Git/clip_image074.png" class="" title="img">
 
 <img src="/2023/06/10/Git/clip_image076.png" class="" title="img">
 
-<p>5.冲突案例</p>
-<p>开发人员A 开发需求1,开发了一个工具类 MathUtil,里面第一行写了一个方法 add(int [] args)；同时开发人员B 开发需求2,开发了一个工具类 MathUtil,里面第一行写了一个方法 add(int a int b)。他们在互相不知道对方需求的情况下同时提交了代码到自己的分支，如果把需求1 和需求2 同时合并到主分支，解决主分支MathUtil的冲突。</p>
-<p>（1）在r1和r2分支上分别创建文件MathUtil</p>
+<h2 id="冲突案例"><a href="#冲突案例" class="headerlink" title="冲突案例"></a>冲突案例</h2><p>开发人员A 开发需求1,开发了一个工具类 MathUtil,里面第一行写了一个方法 add(int [] args)；同时开发人员B 开发需求2,开发了一个工具类 MathUtil,里面第一行写了一个方法 add(int a int b)。他们在互相不知道对方需求的情况下同时提交了代码到自己的分支，如果把需求1 和需求2 同时合并到主分支，解决主分支MathUtil的冲突。</p>
+<ul>
+<li>在r1和r2分支上分别创建文件MathUtil</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image078.jpg" class="" title="img">
 
-<p>（2）将r1和r2两个分支合并到master主分支上后，MathUtil变成了冲突文件</p>
+<ul>
+<li>将r1和r2两个分支合并到master主分支上后，MathUtil变成了冲突文件</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image080.jpg" class="" title="img">
 
-<p>（3）处理冲突</p>
-<p>1）编辑冲突：</p>
-<img src="/2023/06/10/Git/clip_image082.png" class="" title="img">
+<ul>
+<li><p>处理冲突</p>
+<ul>
+<li>编辑冲突：</li>
+</ul>
+  <img src="/2023/06/10/Git/clip_image082.png" class="" title="img">
 
-<img src="/2023/06/10/Git/clip_image084.jpg" class="" title="img">
+  <img src="/2023/06/10/Git/clip_image084.jpg" class="" title="img">
 
-<p>2）使用左边的：</p>
-<img src="/2023/06/10/Git/clip_image086.png" class="" title="img">
+<ul>
+<li>使用左边的：</li>
+</ul>
+  <img src="/2023/06/10/Git/clip_image086.png" class="" title="img">
 
-<img src="/2023/06/10/Git/clip_image088.jpg" class="" title="img">
+  <img src="/2023/06/10/Git/clip_image088.jpg" class="" title="img">
 
-<p>3）再重新提交即可：</p>
-<img src="/2023/06/10/Git/clip_image090.jpg" class="" title="img">
-
-<p>6.远程仓库</p>
-<p>（1）创建远程仓库</p>
+<ul>
+<li>再重新提交即可：</li>
+</ul>
+  <img src="/2023/06/10/Git/clip_image090.jpg" class="" title="img"></li>
+</ul>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><ul>
+<li>创建远程仓库</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image092.jpg" class="" title="img">
 
 <img src="/2023/06/10/Git/clip_image094.jpg" class="" title="img">
 
 <p>把ssh地址复制下来：<a target="_blank" rel="noopener" href="https://gitee.com/miugao/gittest2.git">https://gitee.com/miugao/gittest2.git</a></p>
-<p>（2）推送本地代码到远端</p>
+<ul>
+<li>推送本地代码到远端</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image096.png" class="" title="img">
 
 <img src="/2023/06/10/Git/clip_image098.jpg" class="" title="img">
@@ -316,7 +368,9 @@
 
 <img src="/2023/06/10/Git/clip_image104.jpg" class="" title="img">
 
-<p>（3）到远端查看</p>
+<ul>
+<li>到远端查看</li>
+</ul>
 <img src="/2023/06/10/Git/clip_image106.jpg" class="" title="img">
       
     </div>

@@ -6,12 +6,12 @@
   
   <title>Docker | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="docker全流程配置及应用一、docker初始环境 虚拟机需要链接网络，安装yum工具yum install -y yum-utils device-mapper-persistent-data lvm2 –skip-broken   二、配置网卡转发 写入cat &lt; &#x2F;etc&#x2F;sysctl.d&#x2F;docker.confnet.bridge.bridge-n">
+  <meta name="description" content="docker全流程配置及应用一、docker初始环境 虚拟机需要链接网络，安装yum工具yum install -y yum-utils device-mapper-persistent-data lvm2 –skip-broken 安装完成  二、配置网卡转发 写入cat &lt; &#x2F;etc&#x2F;sysctl.d&#x2F;docker.confnet.bridge.brid">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker">
 <meta property="og:url" content="http://example.com/2023/06/10/Docker/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="docker全流程配置及应用一、docker初始环境 虚拟机需要链接网络，安装yum工具yum install -y yum-utils device-mapper-persistent-data lvm2 –skip-broken   二、配置网卡转发 写入cat &lt; &#x2F;etc&#x2F;sysctl.d&#x2F;docker.confnet.bridge.bridge-n">
+<meta property="og:description" content="docker全流程配置及应用一、docker初始环境 虚拟机需要链接网络，安装yum工具yum install -y yum-utils device-mapper-persistent-data lvm2 –skip-broken 安装完成  二、配置网卡转发 写入cat &lt; &#x2F;etc&#x2F;sysctl.d&#x2F;docker.confnet.bridge.brid">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/06/10/Docker/clip_image002.jpg">
 <meta property="og:image" content="http://example.com/2023/06/10/Docker/clip_image004.jpg">
@@ -100,22 +100,6 @@
 <meta property="og:image" content="http://example.com/2023/06/10/Docker/clip_image170.jpg">
 <meta property="og:image" content="http://example.com/2023/06/10/Docker/clip_image172.jpg">
 <meta property="og:image" content="http://example.com/2023/06/10/Docker/clip_image174.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image174.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image174.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image175.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image177.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image178.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image178.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image179.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image181.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image182.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image182.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image181.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image174.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image177.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image174.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image174.jpg">
-<meta property="og:image" content="http://example.com/docker/clip_image184.jpg">
 <meta property="og:image" content="http://example.com/2023/06/10/Docker/clip_image186.jpg">
 <meta property="og:image" content="http://example.com/2023/06/10/Docker/clip_image188.jpg">
 <meta property="og:image" content="http://example.com/2023/06/10/Docker/clip_image190.jpg">
@@ -126,7 +110,7 @@
 <meta property="og:image" content="http://example.com/2023/06/10/Docker/clip_image200.jpg">
 <meta property="og:image" content="http://example.com/2023/06/10/Docker/clip_image202.jpg">
 <meta property="article:published_time" content="2023-06-10T15:15:10.231Z">
-<meta property="article:modified_time" content="2023-06-10T16:11:06.250Z">
+<meta property="article:modified_time" content="2023-06-11T13:31:09.489Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2023/06/10/Docker/clip_image002.jpg">
@@ -214,7 +198,7 @@
 
 <h1 id="docker全流程配置及应用"><a href="#docker全流程配置及应用" class="headerlink" title="docker全流程配置及应用"></a>docker全流程配置及应用</h1><h2 id="一、docker初始环境"><a href="#一、docker初始环境" class="headerlink" title="一、docker初始环境"></a>一、docker初始环境</h2><ul>
 <li>虚拟机需要链接网络，安装yum工具<br>yum install -y yum-utils device-mapper-persistent-data lvm2 –skip-broken<img src="/2023/06/10/Docker/clip_image002.jpg" class="" title="img">
-<img src="/2023/06/10/Docker/clip_image004.jpg" class="" title="img"></li>
+安装完成<img src="/2023/06/10/Docker/clip_image004.jpg" class="" title="img"></li>
 </ul>
 <h2 id="二、配置网卡转发"><a href="#二、配置网卡转发" class="headerlink" title="二、配置网卡转发"></a>二、配置网卡转发</h2><ul>
 <li>写入<br>cat &lt;<EOF > &#x2F;etc&#x2F;sysctl.d&#x2F;docker.conf<br>net.bridge.bridge-nf-call-ip6tables &#x3D; 1<br>net.bridge.bridge-nf-call-iptables &#x3D; 1<br>net.ipv4.conf.default.rp_filter &#x3D; 0<br>net.ipv4.conf.all.rp_filter &#x3D; 0<br>net.ipv4.ip_forward&#x3D;1<br>EOF<img src="/2023/06/10/Docker/clip_image006.jpg" class="" title="img"></li>
@@ -223,7 +207,7 @@
 <h2 id="三、利用域名进行docker安装"><a href="#三、利用域名进行docker安装" class="headerlink" title="三、利用域名进行docker安装"></a>三、利用域名进行docker安装</h2><ul>
 <li>用阿里云提供的docker专属repo仓库<br>curl -o &#x2F;etc&#x2F;yum.repos.d&#x2F;docker-ce.repo <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a><img src="/2023/06/10/Docker/clip_image010.jpg" class="" title="img"></li>
 <li>更新yum缓存<br>yum clean all &amp;&amp; yum makecache<img src="/2023/06/10/Docker/clip_image012.jpg" class="" title="img">
-<img src="/2023/06/10/Docker/clip_image014.jpg" class="" title="img"></li>
+更新缓存成功<img src="/2023/06/10/Docker/clip_image014.jpg" class="" title="img"></li>
 <li>查看源中可用版本<br>yum list docker-ce –showduplicates | sort -r<img src="/2023/06/10/Docker/clip_image016.jpg" class="" title="img"></li>
 <li>yum安装<img src="/2023/06/10/Docker/clip_image018.jpg" class="" title="img">
 <img src="/2023/06/10/Docker/clip_image020.jpg" class="" title="img"></li>
@@ -379,15 +363,16 @@ vim &#x2F;etc&#x2F;docker&#x2F;daemon.json<br>加入<br>{<br>“registry-mirrors
 </li>
 <li>部署mysql<ul>
 <li>搜索mysql镜像<br>  docker search mysql  <img src="/2023/06/10/Docker/clip_image174.jpg" class="" title="img"></li>
-<li>拉取mysql镜像<br>  docker pull mysql:5.6<br>  <img src="/docker/clip_image174.jpg" alt="img"><img src="/docker/clip_image174.jpg" alt="img"><img src="/docker/clip_image175.jpg" alt="img"><img src="/docker/clip_image177.jpg" alt="img"><img src="/docker/clip_image178.jpg" alt="img"><img src="/docker/clip_image178.jpg" alt="img"><img src="/docker/clip_image179.jpg" alt="img"></li>
-<li>创建容器，设置端口映射、目录映射<br>  在&#x2F;export&#x2F;data&#x2F;docker-data&#x2F;目录下创建mysql目录用于存储mysql数据信息<br>  mkdir -p &#x2F;export&#x2F;data&#x2F;docker-data&#x2F;mysql<br>  cd &#x2F;export&#x2F;data&#x2F;docker-data&#x2F;mysql<br>  <img src="/docker/clip_image181.jpg" alt="img"><img src="/docker/clip_image182.jpg" alt="img"><img src="/docker/clip_image182.jpg" alt="img"><img src="/docker/clip_image181.jpg" alt="img"><img src="/docker/clip_image174.jpg" alt="img"><img src="/docker/clip_image177.jpg" alt="img"><br>  docker run -id -p 3306:3306 –name&#x3D;bigdata_mysql -v $PWD&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d -v $PWD&#x2F;logs:&#x2F;logs -v $PWD&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql -e MYSQL_ROOT_PASSWORD&#x3D;hadoop mysql:5.6<br>  <img src="/docker/clip_image174.jpg" alt="img"><img src="/docker/clip_image174.jpg" alt="img">xvxvxv<img src="/docker/clip_image184.jpg" alt="img"></li>
-<li>进入容器，操作mysql<br>  docker exec –it bigdata_mysql &#x2F;bin&#x2F;bash<br>  xv<img src="/2023/06/10/Docker/clip_image186.jpg" class="" title="img"></li>
+<li>拉取mysql镜像</li>
+<li>创建容器，设置端口映射、目录映射<br>  在&#x2F;export&#x2F;data&#x2F;docker-data&#x2F;目录下创建mysql目录用于存储mysql数据信息<br>  mkdir -p &#x2F;export&#x2F;data&#x2F;docker-data&#x2F;mysql<br>  cd &#x2F;export&#x2F;data&#x2F;docker-data&#x2F;mysql<br>  docker run -id -p 3306:3306 –name&#x3D;bigdata_mysql -v $PWD&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d -v $PWD&#x2F;logs:&#x2F;logs -v $PWD&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql -e MYSQL_ROOT_PASSWORD&#x3D;hadoop mysql:5.6</li>
+<li>进入容器，操作mysql<br>  docker exec –it bigdata_mysql &#x2F;bin&#x2F;bash  <img src="/2023/06/10/Docker/clip_image186.jpg" class="" title="img"></li>
 </ul>
 </li>
 <li>部署Tomcat<ul>
 <li>搜索tomcat镜像<br>  docker search tomcat  <img src="/2023/06/10/Docker/clip_image188.jpg" class="" title="img"></li>
 <li>拉取tomcat镜像<br>  docker pull tomcat  <img src="/2023/06/10/Docker/clip_image190.jpg" class="" title="img"></li>
-<li>创建容器，设置端口映射、目录映射<br>  创建目录tomcat，并进入目录下<br>  xvxvxv<img src="/2023/06/10/Docker/clip_image192.jpg" class="" title="img"><br>  docker run -id –name&#x3D;c_tomcat -p 8080:8080 -v $PWD:&#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps tomcat  <img src="/2023/06/10/Docker/clip_image194.jpg" class="" title="img"></li>
+<li>创建容器，设置端口映射、目录映射<br>  创建目录tomcat，并进入目录下  <img src="/2023/06/10/Docker/clip_image192.jpg" class="" title="img">
+  docker run -id –name&#x3D;c_tomcat -p 8080:8080 -v $PWD:&#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps tomcat  <img src="/2023/06/10/Docker/clip_image194.jpg" class="" title="img"></li>
 <li>使用外部机器访问tomcat<br>  （但是当前资源未公开，不过配置成了）  <img src="/2023/06/10/Docker/clip_image196.jpg" class="" title="img"></li>
 </ul>
 </li>
