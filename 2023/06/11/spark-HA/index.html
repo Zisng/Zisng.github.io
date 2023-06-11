@@ -6,12 +6,12 @@
   
   <title>Spark-HA | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="spark stand alone HA环境搭建Spark Standalone HA用于提高 Spark 集群的可用性和容错能力。此部署方式使用多个 Spark master节点来实现故障切换和负载均衡，从而确保即使某个节点发生故障或者停机，Spark 集群仍然可以继续工作。">
+  <meta name="description" content="spark stand alone HA环境搭建  Spark Standalone HA用于提高 Spark 集群的可用性和容错能力。此部署方式使用多个 Spark master节点来实现故障切换和负载均衡，从而确保即使某个节点发生故障或者停机，Spark 集群仍然可以继续工作。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spark-HA">
 <meta property="og:url" content="http://example.com/2023/06/11/Spark-HA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="spark stand alone HA环境搭建Spark Standalone HA用于提高 Spark 集群的可用性和容错能力。此部署方式使用多个 Spark master节点来实现故障切换和负载均衡，从而确保即使某个节点发生故障或者停机，Spark 集群仍然可以继续工作。">
+<meta property="og:description" content="spark stand alone HA环境搭建  Spark Standalone HA用于提高 Spark 集群的可用性和容错能力。此部署方式使用多个 Spark master节点来实现故障切换和负载均衡，从而确保即使某个节点发生故障或者停机，Spark 集群仍然可以继续工作。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/06/11/Spark-HA/sparkha.jpg">
 <meta property="og:image" content="http://example.com/2023/06/11/Spark-HA/clip_image002.jpg">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://example.com/2023/06/11/Spark-HA/clip_image022.jpg">
 <meta property="og:image" content="http://example.com/2023/06/11/Spark-HA/clip_image020.jpg">
 <meta property="article:published_time" content="2023-06-11T02:35:04.656Z">
-<meta property="article:modified_time" content="2023-06-11T14:03:33.406Z">
+<meta property="article:modified_time" content="2023-06-11T14:09:35.118Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2023/06/11/Spark-HA/sparkha.jpg">
@@ -110,26 +110,34 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <img src="/2023/06/11/Spark-HA/sparkha.jpg" class="" title="在">
-<h1 id="spark-stand-alone-HA环境搭建"><a href="#spark-stand-alone-HA环境搭建" class="headerlink" title="spark stand alone HA环境搭建"></a>spark stand alone HA环境搭建</h1><p>Spark Standalone HA用于提高 Spark 集群的可用性和容错能力。此部署方式使用多个 Spark master节点来实现故障切换和负载均衡，从而确保即使某个节点发生故障或者停机，Spark 集群仍然可以继续工作。</p>
+        <h1>spark stand alone HA环境搭建</h1>
+<img src="/2023/06/11/Spark-HA/sparkha.jpg" class="" title="在">
+<p>Spark Standalone HA用于提高 Spark 集群的可用性和容错能力。此部署方式使用多个 Spark master节点来实现故障切换和负载均衡，从而确保即使某个节点发生故障或者停机，Spark 集群仍然可以继续工作。</p>
 <span id="more"></span>
-
-<h2 id="修改spark-env-sh文件"><a href="#修改spark-env-sh文件" class="headerlink" title="修改spark-env.sh文件"></a>修改spark-env.sh文件</h2><p>spark.deploy.recoveryMode 指定HA模式 基于Zookeeper实现，指定Zookeeper的连接地址和Zookeeper中注册临时节点的路径</p>
+<h2 id="修改spark-env-sh文件">修改spark-env.sh文件</h2>
+<p>spark.deploy.recoveryMode 指定HA模式 基于Zookeeper实现，指定Zookeeper的连接地址和Zookeeper中注册临时节点的路径</p>
 <ul>
-<li><p>删除文件中的SPARK_MASTER_HOST&#x3D;node1</p>
+<li>删除文件中的SPARK_MASTER_HOST=node1</li>
+</ul>
 <img src="/2023/06/11/Spark-HA/clip_image002.jpg" class="" title="img">
-</li>
-<li><p>增加<br>SPARK_DAEMON_JAVA_OPTS&#x3D;”-Dspark.deploy.recoveryMode&#x3D;ZOOKEEPER -Dspark.deploy.zookeeper.url&#x3D;node1:2181,node2:2181,node3:2181 -Dspark.deploy.zookeeper.dir&#x3D;&#x2F;spark-ha”</p>
-</li>
+<ul>
+<li>增加<br>
+SPARK_DAEMON_JAVA_OPTS=“-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=node1:2181,node2:2181,node3:2181 -Dspark.deploy.zookeeper.dir=/spark-ha”</li>
 </ul>
-<h2 id="把node1上配置好的spark-env-sh发送到node2和node3上"><a href="#把node1上配置好的spark-env-sh发送到node2和node3上" class="headerlink" title="把node1上配置好的spark-env.sh发送到node2和node3上"></a>把node1上配置好的spark-env.sh发送到node2和node3上</h2><p>scp spark-env.sh node2:&#x2F;export&#x2F;server&#x2F;spark&#x2F;conf&#x2F;<br>scp spark-env.sh node3:&#x2F;export&#x2F;server&#x2F;spark&#x2F;conf&#x2F;</p>
+<h2 id="把node1上配置好的spark-env-sh发送到node2和node3上">把node1上配置好的spark-env.sh发送到node2和node3上</h2>
+<p>scp <a target="_blank" rel="noopener" href="http://spark-env.sh">spark-env.sh</a> node2:/export/server/spark/conf/<br>
+scp <a target="_blank" rel="noopener" href="http://spark-env.sh">spark-env.sh</a> node3:/export/server/spark/conf/</p>
 <img src="/2023/06/11/Spark-HA/clip_image004.jpg" class="" title="img">
-
-<h2 id="首先要保证三台虚拟机上当前的standalone集群是停止的"><a href="#首先要保证三台虚拟机上当前的standalone集群是停止的" class="headerlink" title="首先要保证三台虚拟机上当前的standalone集群是停止的"></a>首先要保证三台虚拟机上当前的standalone集群是停止的</h2><ul>
-<li>sbin&#x2F;stop-all.sh<img src="/2023/06/11/Spark-HA/clip_image006.jpg" class="" title="img"></li>
+<h2 id="首先要保证三台虚拟机上当前的standalone集群是停止的">首先要保证三台虚拟机上当前的standalone集群是停止的</h2>
+<ul>
+<li>sbin/stop-all.sh</li>
 </ul>
-<h2 id="启动集群"><a href="#启动集群" class="headerlink" title="启动集群"></a>启动集群</h2><ul>
-<li><p>在node1上 启动一个master 和全部worker<br>sbin&#x2F;start-all.sh</p>
+<img src="/2023/06/11/Spark-HA/clip_image006.jpg" class="" title="img">
+<h2 id="启动集群">启动集群</h2>
+<ul>
+<li>在node1上 启动一个master 和全部worker<br>
+sbin/start-all.sh</li>
+</ul>
 <img src="/2023/06/11/Spark-HA/clip_image008.jpg" class="" title="img">
 <p>node2上进程</p>
 <img src="/2023/06/11/Spark-HA/clip_image010.jpg" class="" title="img">
@@ -137,16 +145,23 @@
 <img src="/2023/06/11/Spark-HA/clip_image012.jpg" class="" title="img">
 <p>web网页上查看</p>
 <img src="/2023/06/11/Spark-HA/clip_image014.jpg" class="" title="img">
-</li>
-<li><p>在node2上启动一个备用的master进程<br>sbin&#x2F;start-master.sh</p>
+<ul>
+<li>在node2上启动一个备用的master进程<br>
+sbin/start-master.sh</li>
+</ul>
 <img src="/2023/06/11/Spark-HA/clip_image016.jpg" class="" title="img">
 <p>到web端查看</p>
-<img src="/2023/06/11/Spark-HA/clip_image018.jpg" class="" title="img"></li>
+<img src="/2023/06/11/Spark-HA/clip_image018.jpg" class="" title="img">
+<h2 id="master注备切换">master注备切换</h2>
+<ul>
+<li>提交spark任务到alivemaster上<br>
+bin/spark-submit --master spark://node1:7077 /export/server/spark/examples/src/main/python/pi.py 1000</li>
 </ul>
-<h2 id="master注备切换"><a href="#master注备切换" class="headerlink" title="master注备切换"></a>master注备切换</h2><ul>
-<li>提交spark任务到alivemaster上<br>bin&#x2F;spark-submit –master spark:&#x2F;&#x2F;node1:7077 &#x2F;export&#x2F;server&#x2F;spark&#x2F;examples&#x2F;src&#x2F;main&#x2F;python&#x2F;pi.py 1000<img src="/2023/06/11/Spark-HA/clip_image022.jpg" class="" title="img"></li>
-<li>提交完成后kill掉node1的master<img src="/2023/06/11/Spark-HA/clip_image020.jpg" class="" title="img"></li>
+<img src="/2023/06/11/Spark-HA/clip_image022.jpg" class="" title="img">
+<ul>
+<li>提交完成后kill掉node1的master</li>
 </ul>
+<img src="/2023/06/11/Spark-HA/clip_image020.jpg" class="" title="img">
 
       
     </div>

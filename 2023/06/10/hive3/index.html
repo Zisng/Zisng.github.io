@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://example.com/2023/06/10/Hive3/8.jpg">
 <meta property="og:image" content="http://example.com/2023/06/10/Hive3/9.jpg">
 <meta property="article:published_time" content="2023-06-10T10:50:13.050Z">
-<meta property="article:modified_time" content="2023-06-11T13:44:54.679Z">
+<meta property="article:modified_time" content="2023-06-11T14:07:16.403Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2023/06/10/Hive3/3.jpg">
@@ -106,40 +106,93 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="hive3安装及应用"><a href="#hive3安装及应用" class="headerlink" title="hive3安装及应用"></a>hive3安装及应用</h2><span id="more"></span>
-
+        <h2 id="hive3安装及应用">hive3安装及应用</h2>
+<span id="more"></span>
 <img src="/2023/06/10/Hive3/3.jpg" class="" title="好">
-<h2 id="一、Mysql安装"><a href="#一、Mysql安装" class="headerlink" title="一、Mysql安装"></a>一、Mysql安装</h2><ul>
-<li>卸载Centos7自带的mariadb<br>rpm -qa|grep mariadb<br>rpm -e mariadb-libs-5.5.68-1.el7.x86_64 –nodeps</li>
-<li>安装mysql<br>mkdir &#x2F;export&#x2F;server&#x2F;mysql<br>tar xvf my<br>yum -y install libaio<br>rpm -ivh mysql-community-common-5.7.29-1.el7.x86_64.rpm mysql-community-libs-5.7.29-1.el7.x86_64.rpm mysql-community-client-5.7.29-1.el7.x86_64.rpm mysql-community-server-5.7.29-1.el7.x86_64.rpm</li>
-<li>安装成功如下图<img src="/2023/06/10/Hive3/2.jpg" class="" title="三十"></li>
-<li>初始化<br>mysqld –initialize<br>chown mysql:mysql &#x2F;var&#x2F;lib&#x2F;mysql -R</li>
-<li>启动mysql<br>systemctl start mysqld.service<br>mysql -u root -p</li>
-<li>启动mysql成功如下图<img src="/2023/06/10/Hive3/1.jpg" class="" title="普通"></li>
+<h2 id="一、Mysql安装">一、Mysql安装</h2>
+<ul>
+<li>卸载Centos7自带的mariadb<br>
+rpm -qa|grep mariadb<br>
+rpm -e mariadb-libs-5.5.68-1.el7.x86_64 –nodeps</li>
+<li>安装mysql<br>
+mkdir /export/server/mysql<br>
+tar xvf my<br>
+yum -y install libaio<br>
+rpm -ivh mysql-community-common-5.7.29-1.el7.x86_64.rpm mysql-community-libs-5.7.29-1.el7.x86_64.rpm mysql-community-client-5.7.29-1.el7.x86_64.rpm mysql-community-server-5.7.29-1.el7.x86_64.rpm</li>
+<li>安装成功如下图</li>
 </ul>
-<h2 id="二、Hive安装"><a href="#二、Hive安装" class="headerlink" title="二、Hive安装"></a>二、Hive安装</h2><ul>
-<li>解压并设置软链接<br>tar zxvf apache-hive-3.1.2-bin.tar.gz<br>ln -s apache-hive-3.1.2-bin hive</li>
-<li>解决hive与hadoop之间guava版本差异<br>cd &#x2F;export&#x2F;server&#x2F;hive&#x2F;<br>cp &#x2F;export&#x2F;server&#x2F;hadoop&#x2F;share&#x2F;hadoop&#x2F;common&#x2F;lib&#x2F;guava-27.0-jre.jar .&#x2F;lib&#x2F;<ul>
-<li>在hive目录下，删除其lib路径下的guava-19.0.jar，并将hadoop中的guava-27.0-jre.jar复制到hive的lib下<img src="/2023/06/10/Hive3/4.jpg" class="" title="个"></li>
+<img src="/2023/06/10/Hive3/2.jpg" class="" title="三十">
+<ul>
+<li>初始化<br>
+mysqld –initialize<br>
+chown mysql:mysql /var/lib/mysql -R</li>
+<li>启动mysql<br>
+systemctl start mysqld.service<br>
+mysql -u root -p</li>
+<li>启动mysql成功如下图</li>
+</ul>
+<img src="/2023/06/10/Hive3/1.jpg" class="" title="普通">
+<h2 id="二、Hive安装">二、Hive安装</h2>
+<ul>
+<li>解压并设置软链接<br>
+tar zxvf apache-hive-3.1.2-bin.tar.gz<br>
+ln -s apache-hive-3.1.2-bin hive</li>
+<li>解决hive与hadoop之间guava版本差异<br>
+cd /export/server/hive/<br>
+cp /export/server/hadoop/share/hadoop/common/lib/guava-27.0-jre.jar ./lib/
+<ul>
+<li>在hive目录下，删除其lib路径下的guava-19.0.jar，并将hadoop中的guava-27.0-jre.jar复制到hive的lib下</li>
 </ul>
 </li>
-<li>修改配置文件<br>cd &#x2F;export&#x2F;server&#x2F;hive&#x2F;conf<br>mv hive-env.sh.template hive-env.sh<br>vim hive-env.sh<br>vim hive-site.xml<br>文件尾部加入<br>export HADOOP_HOME&#x3D;&#x2F;export&#x2F;server&#x2F;hadoop<br>export HIVE_CONF_DIR&#x3D;&#x2F;export&#x2F;server&#x2F;hive&#x2F;conf<br>export HIVE_AUX_JARS_PATH&#x3D;&#x2F;export&#x2F;server&#x2F;hive&#x2F;lib<ul>
-<li>进入hive的conf路径下,移动hive-env.sh.template到hive-env.sh并编辑hive-env.sh和hive-site.xml文件<img src="/2023/06/10/Hive3/5.png" class="" title="地方"></li>
+</ul>
+<img src="/2023/06/10/Hive3/4.jpg" class="" title="个">
+<ul>
+<li>修改配置文件<br>
+cd /export/server/hive/conf<br>
+mv hive-env.sh.template <a target="_blank" rel="noopener" href="http://hive-env.sh">hive-env.sh</a><br>
+vim <a target="_blank" rel="noopener" href="http://hive-env.sh">hive-env.sh</a><br>
+vim hive-site.xml<br>
+文件尾部加入<br>
+export HADOOP_HOME=/export/server/hadoop<br>
+export HIVE_CONF_DIR=/export/server/hive/conf<br>
+export HIVE_AUX_JARS_PATH=/export/server/hive/lib
+<ul>
+<li>进入hive的conf路径下,移动hive-env.sh.template到hive-env.sh并编辑hive-env.sh和hive-site.xml文件</li>
 </ul>
 </li>
-<li>初始化元数据<br>cd &#x2F;export&#x2F;server&#x2F;hive&#x2F;<br>bin&#x2F;schematool -initSchema -dbType mysql -verbos<ul>
-<li>初始化成功，会在mysql中创建74张表<img src="/2023/06/10/Hive3/7.png" class="" title="的"></li>
+</ul>
+<img src="/2023/06/10/Hive3/5.png" class="" title="地方">
+<ul>
+<li>初始化元数据<br>
+cd /export/server/hive/<br>
+bin/schematool -initSchema -dbType mysql -verbos
+<ul>
+<li>初始化成功，会在mysql中创建74张表</li>
 </ul>
 </li>
-<li>启动hive<br>&#x2F;export&#x2F;server&#x2F;hive&#x2F;bin&#x2F;hive –service metastore<br>&#x2F;export&#x2F;server&#x2F;hive&#x2F;bin&#x2F;hive –service metastore &amp;<br>&#x2F;export&#x2F;server&#x2F;hive&#x2F;bin&#x2F;hive –service hiveserver2 &amp;<ul>
-<li>启动metastore服务,前台、后台和hiveserver2服务，启动hiveserver2时需要一定的时间<img src="/2023/06/10/Hive3/8.jpg" class="" title="递归"></li>
+</ul>
+<img src="/2023/06/10/Hive3/7.png" class="" title="的">  
+<ul>
+<li>启动hive<br>
+/export/server/hive/bin/hive --service metastore<br>
+/export/server/hive/bin/hive --service metastore &amp;<br>
+/export/server/hive/bin/hive --service hiveserver2 &amp;
+<ul>
+<li>启动metastore服务,前台、后台和hiveserver2服务，启动hiveserver2时需要一定的时间</li>
 </ul>
 </li>
-<li>beeline客户端连接<br>scp -r &#x2F;export&#x2F;server&#x2F;apache-hive-3.1.2-bin&#x2F; root@node3:&#x2F;export&#x2F;server&#x2F;<br>&#x2F;export&#x2F;server&#x2F;hive&#x2F;bin&#x2F;hive<ul>
-<li>将node1的安装包拷贝到beeline客户端(node3)机器上并连接访问<img src="/2023/06/10/Hive3/9.jpg" class="" title="个"></li>
+</ul>
+<img src="/2023/06/10/Hive3/8.jpg" class="" title="递归">
+<ul>
+<li>beeline客户端连接<br>
+scp -r /export/server/apache-hive-3.1.2-bin/ root@node3:/export/server/<br>
+/export/server/hive/bin/hive
+<ul>
+<li>将node1的安装包拷贝到beeline客户端(node3)机器上并连接访问</li>
 </ul>
 </li>
 </ul>
+<img src="/2023/06/10/Hive3/9.jpg" class="" title="个">
 
       
     </div>
