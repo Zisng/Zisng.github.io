@@ -96,73 +96,78 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-
-<h1 id="八、Spark（Pyspark基础编码环境）"><a href="#八、Spark（Pyspark基础编码环境）" class="headerlink" title="八、Spark（Pyspark基础编码环境）"></a>八、Spark（Pyspark基础编码环境）</h1><h2 id="本机pyspark环境配置"><a href="#本机pyspark环境配置" class="headerlink" title="本机pyspark环境配置"></a>本机pyspark环境配置</h2><ul>
-<li><p>安装anaconda环境</p>
+<h1>Spark-Pyspark基础编码环境</h1>
+<h2 id="本机pyspark环境配置">本机pyspark环境配置</h2>
+<ul>
+<li>安装anaconda环境</li>
+</ul>
 <img src="/2023/06/11/Spark-Pyspark/clip_image002.jpg" class="" title="img">
-</li>
-<li><p>配置pycharm本地python解释器</p>
+<ul>
+<li>配置pycharm本地python解释器</li>
+</ul>
 <img src="/2023/06/11/Spark-Pyspark/clip_image004.jpg" class="" title="img">
-</li>
-<li><p>运行本地代码<br>from pyspark import SparkConf, SparkContext<br>import os<br>os.environ[‘PYSPARK_PYTHON’]&#x3D;’D:\Anaconda\anaconda\envs\pyspark\python.exe’<br>if <strong>name</strong> &#x3D;&#x3D; ‘<strong>main</strong>‘:<br>conf &#x3D; SparkConf().setAppName(“WordCountHelloWorld”).setMaster(“local[*]”)<br> sc &#x3D; SparkContext(conf&#x3D;conf)<br>file_rdd &#x3D; sc.textFile(“..&#x2F;data&#x2F;input&#x2F;words.txt”)<br>words_rdd &#x3D; file_rdd.flatMap(lambda line: line.split(“ “))<br>words_with_one_rdd &#x3D; words_rdd.map(lambda x: (x, 1))<br>result_rdd &#x3D; words_with_one_rdd.reduceByKey(lambda a, b: a + b)<br>print(result_rdd.collect())</p>
-<img src="/2023/06/11/Spark-Pyspark/clip_image006.jpg" class="" title="img"></li>
-</ul>
-<h2 id="远程SSH-Linux链接"><a href="#远程SSH-Linux链接" class="headerlink" title="远程SSH Linux链接"></a>远程SSH Linux链接</h2><p>在本地运行，可能会受到一些限制，而且在处理大量数据时，这些限制可能会影响pyspark运行效果，导致一系列性能问题。所以采用远程链接的方式来处理大大规模数据，用ssh远程方式运行pyspark。</p>
 <ul>
-<li><p>配置远程ssh linux解释器</p>
-<ul>
-<li>链接设置里的SSH Interpreter<img src="/2023/06/11/Spark-Pyspark/clip_image008.jpg" class="" title="img"></li>
-<li>点击下图中的ok<img src="/2023/06/11/Spark-Pyspark/clip_image010.jpg" class="" title="img"></li>
-<li>输入密码<img src="/2023/06/11/Spark-Pyspark/clip_image012.jpg" class="" title="img"></li>
-<li>选择远程链接的解析器位置<br>&#x2F;export&#x2F;server&#x2F;anaconda3&#x2F;envs&#x2F;pyspark&#x2F;bin&#x2F;python3.8<img src="/2023/06/11/Spark-Pyspark/clip_image014.jpg" class="" title="img"></li>
+<li>运行本地代码<br>
+from pyspark import SparkConf, SparkContext<br>
+import os<br>
+os.environ[‘PYSPARK_PYTHON’]=‘D:\Anaconda\anaconda\envs\pyspark\python.exe’<br>
+if <strong>name</strong> == ‘<strong>main</strong>’:<br>
+conf = SparkConf().setAppName(“WordCountHelloWorld”).setMaster(“local[*]”)<br>
+sc = SparkContext(conf=conf)<br>
+file_rdd = sc.textFile(“…/data/input/words.txt”)<br>
+words_rdd = file_rdd.flatMap(lambda line: line.split(&quot; &quot;))<br>
+words_with_one_rdd = words_rdd.map(lambda x: (x, 1))<br>
+result_rdd = words_with_one_rdd.reduceByKey(lambda a, b: a + b)<br>
+print(result_rdd.collect())</li>
 </ul>
+<img src="/2023/06/11/Spark-Pyspark/clip_image006.jpg" class="" title="img">
+<h2 id="远程SSH-Linux链接">远程SSH Linux链接</h2>
+<p>在本地运行，可能会受到一些限制，而且在处理大量数据时，这些限制可能会影响pyspark运行效果，导致一系列性能问题。所以采用远程链接的方式来处理大大规模数据，用ssh远程方式运行pyspark。</p>
+<ul>
+<li>
+<p>配置远程ssh linux解释器</p>
+<ul>
+<li>链接设置里的SSH Interpreter</li>
+</ul>
+<img src="/2023/06/11/Spark-Pyspark/clip_image008.jpg" class="" title="img">
+<ul>
+<li>点击下图中的ok</li>
+</ul>
+<img src="/2023/06/11/Spark-Pyspark/clip_image010.jpg" class="" title="img">
+<ul>
+<li>输入密码</li>
+</ul>
+<img src="/2023/06/11/Spark-Pyspark/clip_image012.jpg" class="" title="img">
+<ul>
+<li>选择远程链接的解析器位置<br>
+/export/server/anaconda3/envs/pyspark/bin/python3.8</li>
+</ul>
+<img src="/2023/06/11/Spark-Pyspark/clip_image014.jpg" class="" title="img">
 </li>
-<li><p>查看虚拟机上是否同步了pycharm中的文件</p>
+<li>
+<p>查看虚拟机上是否同步了pycharm中的文件</p>
+</li>
+</ul>
 <img src="/2023/06/11/Spark-Pyspark/clip_image016.jpg" class="" title="img">
-</li>
-<li><p>运行ssh代码文件<br>from pyspark import SparkConf, SparkContext<br>import os<br>os.environ[‘PYSPARK_PYTHON’]&#x3D;’&#x2F;export&#x2F;server&#x2F;anaconda3&#x2F;envs&#x2F;pyspark&#x2F;bin&#x2F;python3.8’<br>if <strong>name</strong> &#x3D;&#x3D; ‘<strong>main</strong>‘:<br>conf &#x3D; SparkConf().setAppName(“WordCountHelloWorld”).setMaster(“local[*]”)<br>sc &#x3D; SparkContext(conf&#x3D;conf)<br>file_rdd &#x3D; sc.textFile(“file:&#x2F;&#x2F;&#x2F;tmp&#x2F;pycharm_project_96&#x2F;data&#x2F;input&#x2F;words.txt”)<br>words_rdd &#x3D; file_rdd.flatMap(lambda line: line.split(“ “))<br>words_with_one_rdd &#x3D; words_rdd.map(lambda x: (x, 1))<br>result_rdd &#x3D; words_with_one_rdd.reduceByKey(lambda a, b: a + b)<br>print(result_rdd.collect())</p>
-</li>
+<ul>
+<li>运行ssh代码文件<br>
+from pyspark import SparkConf, SparkContext<br>
+import os<br>
+os.environ[‘PYSPARK_PYTHON’]=‘/export/server/anaconda3/envs/pyspark/bin/python3.8’<br>
+if <strong>name</strong> == ‘<strong>main</strong>’:<br>
+conf = SparkConf().setAppName(“WordCountHelloWorld”).setMaster(“local[*]”)<br>
+sc = SparkContext(conf=conf)<br>
+file_rdd = sc.textFile(“file:///tmp/pycharm_project_96/data/input/words.txt”)<br>
+words_rdd = file_rdd.flatMap(lambda line: line.split(&quot; &quot;))<br>
+words_with_one_rdd = words_rdd.map(lambda x: (x, 1))<br>
+result_rdd = words_with_one_rdd.reduceByKey(lambda a, b: a + b)<br>
+print(result_rdd.collect())</li>
 </ul>
 <img src="/2023/06/11/Spark-Pyspark/clip_image018.png" class="" title="img">
       
     </div>
     <footer class="article-footer">
       <a data-url="http://example.com/2023/06/11/Spark-Pyspark/" data-id="clir7v8370006zkwj0k1pea1i" data-title="Spark-Pyspark" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Spark-On-YARN" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/06/11/Spark-On-YARN/" class="article-date">
-  <time class="dt-published" datetime="2023-06-11T03:19:14.977Z" itemprop="datePublished">2023-06-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>七、Spark On YARN</p>
-<p>1.client模式测试</p>
-<p>SPARK_HOME&#x3D;&#x2F;export&#x2F;server&#x2F;spark ${SPARK_HOME}&#x2F;bin&#x2F;spark-submit –master yarn –deploy-mode client –driver-memory 512m –executor-memory 512m –num-executors 1 –total-executor-cores 2 ${SPARK_HOME}&#x2F;examples&#x2F;src&#x2F;main&#x2F;python&#x2F;pi.py 10</p>
-<p><img src="file:///C:/Users/过罗过/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
-<p>2.cluster模式测试</p>
-<p>${SPARK_HOME}&#x2F;bin&#x2F;spark-submit –master yarn –deploy-mode cluster –driver-memory 512m –executor-memory 512m –num-executors 1 –total-executor-cores 2 –conf “spark.pyspark.driver.python&#x3D;&#x2F;export&#x2F;server&#x2F;anaconda3&#x2F;bin&#x2F;python3” –conf “spark.pyspark.python&#x3D;&#x2F;export&#x2F;server&#x2F;anaconda3&#x2F;bin&#x2F;python3” ${SPARK_HOME}&#x2F;examples&#x2F;src&#x2F;main&#x2F;python&#x2F;pi.py 10</p>
-<p><img src="file:///C:/Users/过罗过/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/11/Spark-On-YARN/" data-id="clir7v8350003zkwj4og61q75" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -785,10 +790,6 @@ vim &#x2F;etc&#x2F;docker&#x2F;daemon.json<br>加入<br>{<br>“registry-mirrors
           </li>
         
           <li>
-            <a href="/2023/06/11/Spark-On-YARN/">(no title)</a>
-          </li>
-        
-          <li>
             <a href="/2023/06/11/Spark-HA/">Spark-HA</a>
           </li>
         
@@ -798,6 +799,10 @@ vim &#x2F;etc&#x2F;docker&#x2F;daemon.json<br>加入<br>{<br>“registry-mirrors
         
           <li>
             <a href="/2023/06/11/Spark-Local/">Spark-Local</a>
+          </li>
+        
+          <li>
+            <a href="/2023/06/10/Docker/">Docker</a>
           </li>
         
       </ul>
