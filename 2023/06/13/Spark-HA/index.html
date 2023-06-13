@@ -10,7 +10,7 @@
   <!-- bootstrapcss文件 -->
  <!--  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 <!--   
-<link rel="stylesheet" href="/css/zhl.css">
+<link rel="stylesheet" href="/limeiyu.github.io/css/zhl.css">
 
  -->
   
@@ -30,7 +30,7 @@
     <div id="header">
 	<div id="header-left">
 	<h1 id="header-title"> 
-	<a href="/">
+	<a href="/limeiyu.github.io/">
 		Hexo
 	</a>
 	</h1>
@@ -39,13 +39,13 @@
 	<div id="header-right">
 		
 		
-		<a href="/"  title="home"><i class="fa fa-home ">home</i></a>
+		<a href="/limeiyu.github.io/"  title="home"><i class="fa fa-home ">home</i></a>
 		
 		<a target="_blank" rel="noopener" href="https://github.com/lizehongss/demo_show"  title="demo"><i class="fa fa-code ">demo</i></a>
 		
-		<a href="/about"  title="about"><i class="fa fa-user ">about</i></a>
+		<a href="/limeiyu.github.io/about"  title="about"><i class="fa fa-user ">about</i></a>
 		
-		<a href="/"  title="music"><i class="fa fa-music ">music</i></a>
+		<a href="/limeiyu.github.io/"  title="music"><i class="fa fa-music ">music</i></a>
 		
 		
 	</div>
@@ -65,7 +65,7 @@
 	<div class="widget-wrap">
 		<h3 class="widget-title fa fa-archive">归档</h3>
 		<div class="widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">8</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/limeiyu.github.io/archives/2023/">2023</a><span class="archive-list-count">8</span></li></ul>
 		</div>
 	</div>
 
@@ -95,33 +95,33 @@
 <span id="more"></span>
 
 <h2 id="修改spark-env-sh文件"><a href="#修改spark-env-sh文件" class="headerlink" title="修改spark-env.sh文件"></a>修改spark-env.sh文件</h2><p>spark.deploy.recoveryMode 指定HA模式 基于Zookeeper实现，指定Zookeeper的连接地址和Zookeeper中注册临时节点的路径<br>删除文件中的SPARK_MASTER_HOST&#x3D;node1</p>
-<img src="/2023/06/13/Spark-HA/clip_image002.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image002.jpg" class="" title="img">
 
 <p>增加<br>SPARK_DAEMON_JAVA_OPTS&#x3D;”-Dspark.deploy.recoveryMode&#x3D;ZOOKEEPER -Dspark.deploy.zookeeper.url&#x3D;node1:2181,node2:2181,node3:2181 -Dspark.deploy.zookeeper.dir&#x3D;&#x2F;spark-ha”</p>
 <h2 id="把node1上配置好的spark-env-sh发送到node2和node3上"><a href="#把node1上配置好的spark-env-sh发送到node2和node3上" class="headerlink" title="把node1上配置好的spark-env.sh发送到node2和node3上"></a>把node1上配置好的spark-env.sh发送到node2和node3上</h2><p>scp spark-env.sh node2:&#x2F;export&#x2F;server&#x2F;spark&#x2F;conf&#x2F;<br>scp spark-env.sh node3:&#x2F;export&#x2F;server&#x2F;spark&#x2F;conf&#x2F;</p>
-<img src="/2023/06/13/Spark-HA/clip_image004.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image004.jpg" class="" title="img">
 
 <h2 id="首先要保证三台虚拟机上当前的standalone集群是停止的"><a href="#首先要保证三台虚拟机上当前的standalone集群是停止的" class="headerlink" title="首先要保证三台虚拟机上当前的standalone集群是停止的"></a>首先要保证三台虚拟机上当前的standalone集群是停止的</h2><p>sbin&#x2F;stop-all.sh</p>
-<img src="/2023/06/13/Spark-HA/clip_image006.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image006.jpg" class="" title="img">
 
 <h2 id="启动集群"><a href="#启动集群" class="headerlink" title="启动集群"></a>启动集群</h2><p>在node1上 启动一个master 和全部worker<br>sbin&#x2F;start-all.sh</p>
-<img src="/2023/06/13/Spark-HA/clip_image008.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image008.jpg" class="" title="img">
 <p>node2上进程</p>
-<img src="/2023/06/13/Spark-HA/clip_image010.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image010.jpg" class="" title="img">
 <p>node3上进程</p>
-<img src="/2023/06/13/Spark-HA/clip_image012.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image012.jpg" class="" title="img">
 <p>web网页上查看</p>
-<img src="/2023/06/13/Spark-HA/clip_image014.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image014.jpg" class="" title="img">
 
 <p>在node2上启动一个备用的master进程<br>sbin&#x2F;start-master.sh</p>
-<img src="/2023/06/13/Spark-HA/clip_image016.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image016.jpg" class="" title="img">
 <p>到web端查看</p>
-<img src="/2023/06/13/Spark-HA/clip_image018.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image018.jpg" class="" title="img">
 
 <h2 id="master注备切换"><a href="#master注备切换" class="headerlink" title="master注备切换"></a>master注备切换</h2><p>提交spark任务到alivemaster上<br>bin&#x2F;spark-submit –master spark:&#x2F;&#x2F;node1:7077 &#x2F;export&#x2F;server&#x2F;spark&#x2F;examples&#x2F;src&#x2F;main&#x2F;python&#x2F;pi.py 1000</p>
-<img src="/2023/06/13/Spark-HA/clip_image022.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image022.jpg" class="" title="img">
 <p>提交完成后kill掉node1的master</p>
-<img src="/2023/06/13/Spark-HA/clip_image020.jpg" class="" title="img">
+<img src="/limeiyu.github.io/2023/06/13/Spark-HA/clip_image020.jpg" class="" title="img">
 
 	</div>
 </article>
