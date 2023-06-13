@@ -10,7 +10,7 @@
   <!-- bootstrapcss文件 -->
  <!--  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 <!--   
-<link rel="stylesheet" href="/css/zhl.css">
+<link rel="stylesheet" href="/limeiyu.github.io/css/zhl.css">
 
  -->
   
@@ -30,7 +30,7 @@
     <div id="header">
 	<div id="header-left">
 	<h1 id="header-title"> 
-	<a href="/">
+	<a href="/limeiyu.github.io/">
 		Hexo
 	</a>
 	</h1>
@@ -39,13 +39,13 @@
 	<div id="header-right">
 		
 		
-		<a href="/"  title="home"><i class="fa fa-home ">home</i></a>
+		<a href="/limeiyu.github.io/"  title="home"><i class="fa fa-home ">home</i></a>
 		
 		<a target="_blank" rel="noopener" href="https://github.com/lizehongss/demo_show"  title="demo"><i class="fa fa-code ">demo</i></a>
 		
-		<a href="/about"  title="about"><i class="fa fa-user ">about</i></a>
+		<a href="/limeiyu.github.io/about"  title="about"><i class="fa fa-user ">about</i></a>
 		
-		<a href="/"  title="music"><i class="fa fa-music ">music</i></a>
+		<a href="/limeiyu.github.io/"  title="music"><i class="fa fa-music ">music</i></a>
 		
 		
 	</div>
@@ -65,7 +65,7 @@
 	<div class="widget-wrap">
 		<h3 class="widget-title fa fa-archive">归档</h3>
 		<div class="widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">8</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/limeiyu.github.io/archives/2023/">2023</a><span class="archive-list-count">8</span></li></ul>
 		</div>
 	</div>
 
@@ -91,37 +91,32 @@
   	</span>
   </div>
   <div class="post-content">
-  <h1 id="Spark-Pyspark基础编码环境"><a href="#Spark-Pyspark基础编码环境" class="headerlink" title="Spark-Pyspark基础编码环境"></a>Spark-Pyspark基础编码环境</h1><img src="/2023/06/11/Spark-Pyspark/sparkpyspark.jpg" class="" title="发">
+  <h1 id="Spark-Pyspark基础编码环境"><a href="#Spark-Pyspark基础编码环境" class="headerlink" title="Spark-Pyspark基础编码环境"></a>Spark-Pyspark基础编码环境</h1><span id="more"></span>
 
-<span id="more"></span>
+<h2 id="本机pyspark环境配置"><a href="#本机pyspark环境配置" class="headerlink" title="本机pyspark环境配置"></a>本机pyspark环境配置</h2><p>安装anaconda环境</p>
+<img src="/limeiyu.github.io/2023/06/11/Spark-Pyspark/clip_image002.jpg" class="" title="img">
 
-<h2 id="本机pyspark环境配置"><a href="#本机pyspark环境配置" class="headerlink" title="本机pyspark环境配置"></a>本机pyspark环境配置</h2><ul>
-<li><p>安装anaconda环境</p>
-<img src="/2023/06/11/Spark-Pyspark/clip_image002.jpg" class="" title="img">
-</li>
-<li><p>配置pycharm本地python解释器</p>
-<img src="/2023/06/11/Spark-Pyspark/clip_image004.jpg" class="" title="img">
-</li>
-<li><p>运行本地代码<br>from pyspark import SparkConf, SparkContext<br>import os<br>os.environ[‘PYSPARK_PYTHON’]&#x3D;’D:\Anaconda\anaconda\envs\pyspark\python.exe’<br>if <em>name</em> &#x3D;&#x3D; “<em>main</em>“:<br>conf &#x3D; SparkConf().setAppName(“WordCountHelloWorld”).setMaster(“local[*]”)<br> sc &#x3D; SparkContext(conf&#x3D;conf)<br>file_rdd &#x3D; sc.textFile(“..&#x2F;data&#x2F;input&#x2F;words.txt”)<br>words_rdd &#x3D; file_rdd.flatMap(lambda line: line.split(“ “))<br>words_with_one_rdd &#x3D; words_rdd.map(lambda x: (x, 1))<br>result_rdd &#x3D; words_with_one_rdd.reduceByKey(lambda a, b: a + b)<br>print(result_rdd.collect())</p>
-<img src="/2023/06/11/Spark-Pyspark/clip_image006.jpg" class="" title="img"></li>
-</ul>
+<p>配置pycharm本地python解释器</p>
+<img src="/limeiyu.github.io/2023/06/11/Spark-Pyspark/clip_image004.jpg" class="" title="img">
+
+<p>运行本地代码<br>from pyspark import SparkConf, SparkContext<br>import os<br>os.environ[‘PYSPARK_PYTHON’]&#x3D;’D:\Anaconda\anaconda\envs\pyspark\python.exe’<br>if <em>name</em> &#x3D;&#x3D; “<em>main</em>“:<br>  conf &#x3D; SparkConf().setAppName(“WordCountHelloWorld”).setMaster(“local[*]”)<br>   sc &#x3D; SparkContext(conf&#x3D;conf)<br>  file_rdd &#x3D; sc.textFile(“..&#x2F;data&#x2F;input&#x2F;words.txt”)<br>  words_rdd &#x3D; file_rdd.flatMap(lambda line: line.split(“ “))<br>  words_with_one_rdd &#x3D; words_rdd.map(lambda x: (x, 1))<br>  result_rdd &#x3D; words_with_one_rdd.reduceByKey(lambda a, b: a + b)<br>print(result_rdd.collect())</p>
+<img src="/limeiyu.github.io/2023/06/11/Spark-Pyspark/clip_image006.jpg" class="" title="img">
+
 <h2 id="远程SSH-Linux链接"><a href="#远程SSH-Linux链接" class="headerlink" title="远程SSH Linux链接"></a>远程SSH Linux链接</h2><p>在本地运行，可能会受到一些限制，而且在处理大量数据时，这些限制可能会影响pyspark运行效果，导致一系列性能问题。所以采用远程链接的方式来处理大大规模数据，用ssh远程方式运行pyspark。</p>
-<ul>
-<li><p>配置远程ssh linux解释器</p>
-<ul>
-<li>链接设置里的SSH Interpreter<img src="/2023/06/11/Spark-Pyspark/clip_image008.jpg" class="" title="img"></li>
-<li>点击下图中的ok<img src="/2023/06/11/Spark-Pyspark/clip_image010.jpg" class="" title="img"></li>
-<li>输入密码<img src="/2023/06/11/Spark-Pyspark/clip_image012.jpg" class="" title="img"></li>
-<li>选择远程链接的解析器位置<br>&#x2F;export&#x2F;server&#x2F;anaconda3&#x2F;envs&#x2F;pyspark&#x2F;bin&#x2F;python3.8<img src="/2023/06/11/Spark-Pyspark/clip_image014.jpg" class="" title="img"></li>
-</ul>
-</li>
-<li><p>查看虚拟机上是否同步了pycharm中的文件</p>
-<img src="/2023/06/11/Spark-Pyspark/clip_image016.jpg" class="" title="img">
-</li>
-<li><p>运行ssh代码文件<br>from pyspark import SparkConf, SparkContext<br>import os<br>os.environ[‘PYSPARK_PYTHON’]&#x3D;’&#x2F;export&#x2F;server&#x2F;anaconda3&#x2F;envs&#x2F;pyspark&#x2F;bin&#x2F;python3.8’<br>if <em>name</em> &#x3D;&#x3D; ‘<em>main</em>‘:<br>conf &#x3D; SparkConf().setAppName(“WordCountHelloWorld”).setMaster(“local[*]”)<br>sc &#x3D; SparkContext(conf&#x3D;conf)<br>file_rdd &#x3D; sc.textFile(“file:&#x2F;&#x2F;&#x2F;tmp&#x2F;pycharm_project_96&#x2F;data&#x2F;input&#x2F;words.txt”)<br>words_rdd &#x3D; file_rdd.flatMap(lambda line: line.split(“ “))<br>words_with_one_rdd &#x3D; words_rdd.map(lambda x: (x, 1))<br>result_rdd &#x3D; words_with_one_rdd.reduceByKey(lambda a, b: a + b)<br>print(result_rdd.collect())</p>
-</li>
-</ul>
-<img src="/2023/06/11/Spark-Pyspark/clip_image018.png" class="" title="img">
+<p>配置远程ssh linux解释器<br>链接设置里的SSH Interpreter</p>
+<img src="/limeiyu.github.io/2023/06/11/Spark-Pyspark/clip_image008.jpg" class="" title="img">
+<p>点击下图中的ok</p>
+<img src="/limeiyu.github.io/2023/06/11/Spark-Pyspark/clip_image010.jpg" class="" title="img">
+<p>输入密码</p>
+<img src="/limeiyu.github.io/2023/06/11/Spark-Pyspark/clip_image012.jpg" class="" title="img">
+<p>选择远程链接的解析器位置<br>&#x2F;export&#x2F;server&#x2F;anaconda3&#x2F;envs&#x2F;pyspark&#x2F;bin&#x2F;python3.8</p>
+<img src="/limeiyu.github.io/2023/06/11/Spark-Pyspark/clip_image014.jpg" class="" title="img">
+
+<p>查看虚拟机上是否同步了pycharm中的文件</p>
+<img src="/limeiyu.github.io/2023/06/11/Spark-Pyspark/clip_image016.jpg" class="" title="img">
+
+<p>运行ssh代码文件<br>from pyspark import SparkConf, SparkContext<br>import os<br>os.environ[‘PYSPARK_PYTHON’]&#x3D;’&#x2F;export&#x2F;server&#x2F;anaconda3&#x2F;envs&#x2F;pyspark&#x2F;bin&#x2F;python3.8’<br>if <em>name</em> &#x3D;&#x3D; ‘<em>main</em>‘:<br>  conf &#x3D; SparkConf().setAppName(“WordCountHelloWorld”).setMaster(“local[*]”)<br>  sc &#x3D; SparkContext(conf&#x3D;conf)<br>  file_rdd &#x3D; sc.textFile(“file:&#x2F;&#x2F;&#x2F;tmp&#x2F;pycharm_project_96&#x2F;data&#x2F;input&#x2F;words.txt”)<br>  words_rdd &#x3D; file_rdd.flatMap(lambda line: line.split(“ “))<br>  words_with_one_rdd &#x3D; words_rdd.map(lambda x: (x, 1))<br>  result_rdd &#x3D; words_with_one_rdd.reduceByKey(lambda a, b: a + b)<br>print(result_rdd.collect())</p>
+<img src="/limeiyu.github.io/2023/06/11/Spark-Pyspark/clip_image018.png" class="" title="img">
 	</div>
 </article>
 
